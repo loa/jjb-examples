@@ -1,0 +1,10 @@
+- builder:
+    name: shared_script
+    builders:
+      - shell: 'echo stuff that shouldnt be duplicated'
+
+
+- builder:
+    name: shared_script_arguments
+    builders:
+      - shell: 'echo {msg}'

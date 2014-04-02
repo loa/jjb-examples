@@ -1,0 +1,23 @@
+- defaults:
+    name: defaults
+    description: |
+      <p><b>This job is managed by jenkins-job-builder</b></p>
+
+      <p><b>Do not edit this job through the web</b></p>
+    project-type: freestyle
+    concurrent: true
+    quiet-period: 0
+    node: master
+
+    wrappers:
+      - timeout:
+          timeout: 30
+          fail: true
+      - timestamps
+      - ansicolor
+
+    logrotate:
+      daysToKeep: 7
+      numToKeep: 10
+      artifactDaysToKeep: -1
+      artifactNumToKeep: -1

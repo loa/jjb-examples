@@ -1,0 +1,12 @@
+# DEMO 2 - Macro
+- job:
+    name: foo
+    defaults: defaults
+
+    builders:
+      - shared_script
+
+      - shell: |
+          #!/bin/bash +x
+
+          echo "foo"

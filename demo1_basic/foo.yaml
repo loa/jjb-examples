@@ -1,0 +1,9 @@
+- job:
+    name: foo
+    defaults: defaults
+
+    builders:
+      - shell: |
+          #!/bin/bash +x
+
+          echo "foo"

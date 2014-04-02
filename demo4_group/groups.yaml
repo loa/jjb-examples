@@ -1,0 +1,45 @@
+# DEMO 4 - Group
+
+- job-template:
+    name: '{name}-start'
+    builders:
+      - shared_script_arguments:
+         msg: "start."
+    publishers:
+      - trigger:
+          project: '{name}-test'
+          threshold: SUCCESS
+
+- job-template:
+    name: '{name}-test'
+    builders:
+      - shared_script_arguments:
+         msg: "test."
+    publishers:
+      - trigger:
+          project: '{name}-release'
+          threshold: SUCCESS
+
+- job-template:
+    name: '{name}-release'
+    builders:
+      - shared_script_arguments:
+         msg: "release"
+
+- job-group:
+    name: test-pipeline
+    jobs:
+      - '{name}-start'
+      - '{name}-test'
+      - '{name}-release'
+
+- project:
+    name: foo
+    jobs:
+      - test-pipeline
+
+
+- project:
+    name: bar
+    jobs:
+      - test-pipeline
